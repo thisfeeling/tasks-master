@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMaster</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header>
+        <h1 class="title">TaskMaster</h1>
+    </header>
+
+    <h1 class="subtitle">Gestion de Tareas</h1>
+
+    <div class="contenedor-todo" id="contenedor-todo">
+        <div id="contenedor-menus" class="contenedor-menus">
+            <p>Opciones</p>
+            <div id="contenedor-opciones" class="contenedor-opciones">
+                <div>
+                    <button id="btn-añadir"> 
+                        <img src="./assets/agregar.png" alt="">
+                    </button>
+                    <button id="btn-buscar"> 
+                        <img src="./assets/buscar.png" alt="">
+                    </button>
+                </div>
+    
+                <div>
+                    <button id="btn-mostrar">
+                        <img src="./assets/mostrar.png" alt="">
+                    </button>
+                    <button id="btn-cantidad">
+                        <img src="./assets/cantidad.png" alt="">
+                    </button>
+                </div>
+            </div>        
+        </div>
+    
+        <div id="contenedor-formulario" class="contenedor-formulario ocultar">
+            <div id="campo-tarea-registrar" class="campo-tarea-registrar">
+                <label for="label-nombre-tarea">Nombre Tarea:</label>
+                <input id="label-nombre-tarea" type="text" placeholder="Ingrese la tarea que desea registrar">
+            </div>
+            <div id="campo-tarea-registrar" class="campo-tarea-registrar">
+                <label for="label-fecha-limite">Fecha Limite:</label>
+                <input type="date" name="" id="label-fecha-limite">
+            </div>
+            <div id="campo-tarea-registrar" class="campo-tarea-registrar">
+                <label for="label-prioridad">Prioridad:</label>
+                <select name="" id="label-prioridad">
+                    <option value="Prioridad Alta">Prioridad Alta</option>
+                    <option value="Prioridad Media">Prioridad Media</option>
+                    <option value="Prioridad Baja">Prioridad Baja</option>
+                </select>
+            </div>
+            <div id="campo-tarea-registrar" class="campo-tarea-button">
+                <button id="btn-accion-cerrar"> 
+                    Cerrar
+                </button>
+                <button id="btn-accion-añadir">
+                    Añadir
+                </button>
+            </div>
+        </div>
+
+        <div id="contenedor-enlistar" class="contenedor-enlistar ocultar">
+            <div class="enlistar-submenu">
+                <div class="enlistar-titles">
+                    <h4>#</h4>
+                    <h4>Nombre</h4>
+                    <h4>Fecha Limite</h4>
+                    <h4>Prioridad</h4>
+                </div>
+
+                <div class="enlistar-elementos-background">
+                    <div id="enlistar-elementos">
+
+                    </div>
+                </div>
+
+                <div class="botones-enlistar">
+                    <button id="btn-salir-enlistar">Cerrar</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="contenedor-buscar" class="contenedor-buscar ocultar">
+            <div class="buscar-submenu">
+                <div class="buscar-campo">
+                    <label for="label-prioridad-buscar">Seleccione una prioridad: </label>
+                    <select name="" id="label-prioridad-buscar">
+                        <option value="Prioridad Alta">Prioridad Alta</option>
+                        <option value="Prioridad Media">Prioridad Media</option>
+                        <option value="Prioridad Baja">Prioridad Baja</option>
+                    </select>
+                </div>            
+
+                <div class="enlistar-titles">
+                    <h4>#</h4>
+                    <h4>Nombre</h4>
+                    <h4>Fecha Limite</h4>
+                    <h4>Prioridad</h4>
+                </div>
+
+                <div class="buscar-elementos-background">
+                    <div id="buscar-elementos">
+                    
+                    </div>
+                </div>
+        
+                <div class="botones-buscar">
+                    <button id="btn-salir-buscar">Cerrar</button>
+                </div>
+            </div>
+            
+        </div>
+
+        <div id="contenedor-cantidad" class="contenedor-cantidad ocultar">
+            <div class="cantidad-submenu">
+                <div class="cantidad-title">
+                    <h2>La cantidad de tareas que hay registradas son: </h2>
+                </div>
+        
+                <div class="cantidad-subtitle">
+                    <h2 id="cantidad-tareas" class="cantidad-tareas"></h2>
+                </div>
+            </div>
+
+            <div class="botones-cantidad">
+                <button id="btn-salir-cantidad">Cerrar</button>
+            </div>
+        </div>
+
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
