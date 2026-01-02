@@ -18,32 +18,36 @@ let buscar_abrir = document.querySelector("#btn-buscar");
 let buscar_cerrar = document.querySelector("#btn-salir-buscar");
 let prioridad_buscar = document.querySelector("#label-prioridad-buscar");
 
-prioridad_buscar.addEventListener("change", () => {
-    let prioridad_seleccionada = prioridad_buscar.value;
-    buscar_elementos.innerHTML = "";
-    let contador = 1;
-    for (let i = 0; i < tareas.length; i++) {
-        let tarea = tareas[i];
-        if (tarea[2] === prioridad_seleccionada) {
-            buscar_elementos.innerHTML += `
+if (prioridad_buscar) {
+    prioridad_buscar.addEventListener("change", () => {
+        let prioridad_seleccionada = prioridad_buscar.value;
+        buscar_elementos.innerHTML = "";
+        let contador = 1;
+        for (let i = 0; i < tareas.length; i++) {
+            let tarea = tareas[i];
+            if (tarea[2] === prioridad_seleccionada) {
+                buscar_elementos.innerHTML += `
+                    <div class="buscar-elementos">
+                        <p> ${contador} </p>
+                        <p> ${tarea[0]} </p>
+                        <p> ${tarea[1]} </p>
+                        <p> ${tarea[2]} </p>
+                    </div>
+                `;
+                contador++;
+            }
+        }
+        if (contador === 1) {
+            buscar_elementos.innerHTML = `
                 <div class="buscar-elementos">
-                    <p> ${contador} </p>
-                    <p> ${tarea[0]} </p>
-                    <p> ${tarea[1]} </p>
-                    <p> ${tarea[2]} </p>
+                    <p>No se encontraron tareas con esa prioridad.</p>
                 </div>
             `;
-            contador++;
         }
-    }
-    if (contador === 1) {
-        buscar_elementos.innerHTML = `
-            <div class="buscar-elementos">
-                <p>No se encontraron tareas con esa prioridad.</p>
-            </div>
-        `;
-    }
-});
+    });
+} else {
+    console.warn('Elemento #label-prioridad-buscar no encontrado en DOM');
+}
 
 let cantidad_abrir = document.querySelector("#btn-cantidad");
 let cantidad_cerrar = document.querySelector("#btn-salir-cantidad");
@@ -51,20 +55,24 @@ let cantidad_cerrar = document.querySelector("#btn-salir-cantidad");
 let divBuscarCampo = document.querySelector(".buscar-campo");
 let selectPrioridadBuscar = document.querySelector("#label-prioridad-buscar");
 
-divBuscarCampo.addEventListener("click", () => {
-    selectPrioridadBuscar.style.display = "block";
-});
+if (divBuscarCampo) {
+    divBuscarCampo.addEventListener("click", () => {
+        if (selectPrioridadBuscar) selectPrioridadBuscar.style.display = "block";
+    });
+} else {
+    console.warn('Elemento .buscar-campo no encontrado en DOM');
+}
 
 agregar_datos_abrir.addEventListener("click",() => {
-    mostrar_formulario.classList.remove("ocultar");
-    mostrar_enlistar.classList.add("ocultar");
-    mostrar_buscar.classList.add("ocultar");
-    mostrar_cantidad.classList.add("ocultar");
+    mostrar_formulario.classList.remove("hidden");
+    mostrar_enlistar.classList.add("hidden");
+    mostrar_buscar.classList.add("hidden");
+    mostrar_cantidad.classList.add("hidden");
     selectPrioridadBuscar.style.display = "none";
 })
 
 agregar_datos_cerrar.addEventListener("click",() => {
-    mostrar_formulario.classList.add("ocultar");
+    mostrar_formulario.classList.add("hidden");
 })
 
 let tareas = []
@@ -81,10 +89,10 @@ agregar_datos_añadir.addEventListener("click",() => {
 
 enlistar_abrir.addEventListener("click",() => {
     enlistar_elementos.innerHTML = "";
-    mostrar_enlistar.classList.remove("ocultar");
-    mostrar_formulario.classList.add("ocultar");
-    mostrar_buscar.classList.add("ocultar");
-    mostrar_cantidad.classList.add("ocultar");
+    mostrar_enlistar.classList.remove("hidden");
+    mostrar_formulario.classList.add("hidden");
+    mostrar_buscar.classList.add("hidden");
+    mostrar_cantidad.classList.add("hidden");
     selectPrioridadBuscar.style.display = "none";
     for (let i = 0;  i < tareas.length;  i++){
         let tarea = tareas[i]
@@ -95,20 +103,20 @@ enlistar_abrir.addEventListener("click",() => {
                 <p> ${tarea[1]}</p>
                 <p> ${tarea[2]}</p>
             </div>
-        `      
+        `
     }
 })
 
 enlistar_cerrar.addEventListener("click",() => {
-    mostrar_enlistar.classList.add("ocultar");
+    mostrar_enlistar.classList.add("hidden");
 })
 
 buscar_abrir.addEventListener("click",() => {
     buscar_elementos.innerHTML = "";
-    mostrar_buscar.classList.remove("ocultar");
-    mostrar_formulario.classList.add("ocultar");
-    mostrar_enlistar.classList.add("ocultar");
-    mostrar_cantidad.classList.add("ocultar");
+    mostrar_buscar.classList.remove("hidden");
+    mostrar_formulario.classList.add("hidden");
+    mostrar_enlistar.classList.add("hidden");
+    mostrar_cantidad.classList.add("hidden");
     selectPrioridadBuscar.style.display = "none";
     for (let i = 0;  i < tareas.length;  i++){
         let tarea = tareas[i]
@@ -119,24 +127,24 @@ buscar_abrir.addEventListener("click",() => {
                 <p> ${tarea[1]}</p>
                 <p> ${tarea[2]}</p>
             </div>
-        `      
+        `
     }
 })
 
 buscar_cerrar.addEventListener("click",() => {
-    mostrar_buscar.classList.add("ocultar");
+    mostrar_buscar.classList.add("hidden");
 })
 
 cantidad_abrir.addEventListener("click",() => {
-    mostrar_cantidad.classList.remove("ocultar");
-    mostrar_buscar.classList.add("ocultar");
-    mostrar_formulario.classList.add("ocultar");
-    mostrar_enlistar.classList.add("ocultar");
+    mostrar_cantidad.classList.remove("hidden");
+    mostrar_buscar.classList.add("hidden");
+    mostrar_formulario.classList.add("hidden");
+    mostrar_enlistar.classList.add("hidden");
     document.querySelector("#cantidad-tareas").innerText = tareas.length;
 })
 
 cantidad_cerrar.addEventListener("click",() => {
-    mostrar_cantidad.classList.add("ocultar");
+    mostrar_cantidad.classList.add("hidden");
 
 })
 
